@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<script type="text/javascript" src="whooper.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var canvas = document.getElementById("myicon"); //get canvas
+				var icon = whooper.create(canvas);             //create whooper instance
+				icon.color = "#AAAAAA";                       //change color (default is white)
+				icon.set(0);                                 //draw frame No 0
+				
+				//add click listener to the canvas
+				canvas.addEventListener("click", function(){ icon.rotate(300) });
+				
+				//sync whooper icon with range input
+				var range = document.getElementById("range");
+				range.addEventListener("input", function(){ icon.set(range.value) });
+			};
+		</script>
+		
+		<style>
+			canvas#myicon{
+				height:100px;
+				width:100px;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myicon" height="150" width="150"></canvas>
+		<input type="range" id="range">
+	</body>
+</html>
